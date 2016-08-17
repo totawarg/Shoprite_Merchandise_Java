@@ -10,10 +10,12 @@ import java.util.Date;
 
 import org.junit.Test;
 
+import za.co.invictus.shoprite.javamapping.MerchandiseException;
+
 public class FlattenPriceGroupJunit {
 	
 	@Test
-	public void testSingleRegularPrice() throws ParseException {
+	public void testSingleRegularPrice() throws ParseException, MerchandiseException {
 		SimpleDateFormat format = new SimpleDateFormat("yyyy/MM/dd");
 		System.out.println("testSingleRegularPrice");
 		PriceGroup pg1 = new PriceGroup();
@@ -43,7 +45,7 @@ public class FlattenPriceGroupJunit {
 	
 	
 	@Test
-	public void testSinglePromotionPrice() throws ParseException {
+	public void testSinglePromotionPrice() throws ParseException, MerchandiseException {
 		System.out.println("testSinglePromotionPrice");
 		SimpleDateFormat format = new SimpleDateFormat("yyyy/MM/dd");
 		PriceGroup pg1 = new PriceGroup();
@@ -71,7 +73,7 @@ public class FlattenPriceGroupJunit {
 	}
 	
 	@Test
-	public void testSinglePromotionPriceWithCurrentSellPrice() throws ParseException {
+	public void testSinglePromotionPriceWithCurrentSellPrice() throws ParseException, MerchandiseException {
 		System.out.println("testSinglePromotionPriceWithCurrentSellPrice");
 		SimpleDateFormat format = new SimpleDateFormat("yyyy/MM/dd");
 		PriceGroup pg1 = new PriceGroup();
@@ -131,7 +133,7 @@ public class FlattenPriceGroupJunit {
 	}
 	
 	@Test
-	public void testPromotionPriceWithChangingSellPrice1() throws ParseException {
+	public void testPromotionPriceWithChangingSellPrice1() throws ParseException , MerchandiseException{
 		System.out.println("testPromotionPriceWithChangingSellPrice1");
 		SimpleDateFormat format = new SimpleDateFormat("yyyy/MM/dd");
 		PriceGroup pg1 = new PriceGroup();
@@ -212,7 +214,7 @@ public class FlattenPriceGroupJunit {
 	}
 	
 	@Test
-	public void testPromotionPriceWithChangingSellPrice2() throws ParseException {
+	public void testPromotionPriceWithChangingSellPrice2() throws ParseException, MerchandiseException {
 		System.out.println("testPromotionPriceWithChangingSellPrice2");
 		SimpleDateFormat format = new SimpleDateFormat("yyyy/MM/dd");
 		PriceGroup pg1 = new PriceGroup();
@@ -273,7 +275,7 @@ public class FlattenPriceGroupJunit {
 	}
 	
 	@Test
-	public void testPromotionPriceWithChangingSellPrice3() throws ParseException {
+	public void testPromotionPriceWithChangingSellPrice3() throws ParseException, MerchandiseException {
 		System.out.println("testPromotionPriceWithChangingSellPrice3");
 		SimpleDateFormat format = new SimpleDateFormat("yyyy/MM/dd");
 		PriceGroup pg1 = new PriceGroup();
@@ -344,7 +346,7 @@ public class FlattenPriceGroupJunit {
 	}
 	
 	@Test
-	public void testPromotionPriceWithChangingSellPriceOverlap() throws ParseException {
+	public void testPromotionPriceWithChangingSellPriceOverlap() throws ParseException , MerchandiseException{
 		System.out.println("testPromotionPriceWithChangingSellPriceOverlap");
 		
 		SimpleDateFormat format = new SimpleDateFormat("yyyy/MM/dd");
@@ -417,7 +419,7 @@ public class FlattenPriceGroupJunit {
 	}
 	
 	@Test
-	public void testMutliplePromotionsAndMultiRegularPrice() throws ParseException {
+	public void testMutliplePromotionsAndMultiRegularPrice() throws ParseException, MerchandiseException {
 		
 		SimpleDateFormat format = new SimpleDateFormat("yyyy/MM/dd");
 		PriceGroup pg1 = new PriceGroup();
@@ -508,7 +510,7 @@ public class FlattenPriceGroupJunit {
 	
 	
 	@Test
-	public void testSinglePromotionsAndMultiOverlappingRegularPriceWithSameEndDates() throws ParseException {
+	public void testSinglePromotionsAndMultiOverlappingRegularPriceWithSameEndDates() throws ParseException, MerchandiseException {
 		
 		SimpleDateFormat format = new SimpleDateFormat("yyyy/MM/dd");
 		PriceGroup pg1 = new PriceGroup();

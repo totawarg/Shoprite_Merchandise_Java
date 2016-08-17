@@ -6,6 +6,8 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 
+import za.co.invictus.shoprite.javamapping.MerchandiseException;
+
 public class DateRange {
 
 	private Date startDate = null;
@@ -78,7 +80,7 @@ public class DateRange {
 		return outdate;
 	}
 	
-	public static Date getPreviousOrFutureDate(String inputDate, int numberOfDays) throws ParseException {
+	public static Date getPreviousOrFutureDate(String inputDate, int numberOfDays) throws  MerchandiseException {
 
 		DateFormat inDateFormat = new SimpleDateFormat("yyyy/MM/dd");
 		DateFormat outDateFormat = new SimpleDateFormat("yyyy/MM/dd");
@@ -86,16 +88,17 @@ public class DateRange {
 		Calendar cal = Calendar.getInstance();
 		Date indate = null;
 		String outdate = null;
+		Date output=null;
 		try {
 			indate = inDateFormat.parse(inputDate);
 			cal.setTime(indate);
 			cal.add(Calendar.DATE, numberOfDays);
 			outdate = outDateFormat.format(cal.getTime());
+			output=outDateFormat.parse(outdate);
 		} catch (ParseException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			throw new MerchandiseException("Invalid Date Format, expected format is yyyy/MM/dd");
 		}
-		return outDateFormat.parse(outdate);
+		return output;
 	}
 
 	public static void main(String a[]) throws ParseException {

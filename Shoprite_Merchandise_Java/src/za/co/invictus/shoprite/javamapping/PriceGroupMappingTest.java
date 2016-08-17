@@ -8,7 +8,7 @@ import java.text.ParseException;
 
 public class PriceGroupMappingTest {
 
-	public static void main(String[] args) throws ParseException, IOException {
+	public static void main(String[] args) throws ParseException, IOException, MerchandiseException {
 		// TODO Auto-generated method stub
 		FileInputStream in=new FileInputStream("C:/Users/i045193/Documents/Shoprite/560/idoc1.xml");
 		FileOutputStream out=new FileOutputStream("C:/Users/i045193/Documents/Shoprite/560/idoc1out.xml");
