@@ -8,8 +8,6 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Date;
 
-import za.co.invictus.shoprite.javamapping.MerchandiseException;
-
 public class FlattenPriceGroup implements Serializable {
 
 	/**

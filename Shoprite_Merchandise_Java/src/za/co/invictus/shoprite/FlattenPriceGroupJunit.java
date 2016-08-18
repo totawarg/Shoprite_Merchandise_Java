@@ -10,8 +10,6 @@ import java.util.Date;
 
 import org.junit.Test;
 
-import za.co.invictus.shoprite.javamapping.MerchandiseException;
-
 public class FlattenPriceGroupJunit {
 	
 	@Test

@@ -6,6 +6,8 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.text.ParseException;
 
+import za.co.invictus.shoprite.MerchandiseException;
+
 public class PriceGroupMappingTest {
 
 	public static void main(String[] args) throws ParseException, IOException, MerchandiseException {

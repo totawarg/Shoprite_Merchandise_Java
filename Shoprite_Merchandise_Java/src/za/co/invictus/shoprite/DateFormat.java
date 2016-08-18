@@ -5,8 +5,6 @@ import java.text.ParseException;
 import java.util.Calendar;
 import java.util.Date;
 
-import za.co.invictus.shoprite.javamapping.MerchandiseException;
-
 public class DateFormat {
 	
 	public static Date formatDate(String inputDate)

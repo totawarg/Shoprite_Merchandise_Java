@@ -1,4 +1,4 @@
-package za.co.invictus.shoprite.javamapping;
+package za.co.invictus.shoprite;
 
 public class MerchandiseException extends Exception {
 

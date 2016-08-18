@@ -4,8 +4,8 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.text.ParseException;
-
 import java.util.ArrayList;
+
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
@@ -30,6 +30,7 @@ import com.sap.aii.mapping.api.TransformationOutput;
 
 import za.co.invictus.shoprite.DateFormat;
 import za.co.invictus.shoprite.FlattenPriceGroup;
+import za.co.invictus.shoprite.MerchandiseException;
 import za.co.invictus.shoprite.PriceGroup;
 
 public class PriceGroupJavaMapping extends AbstractTransformation {

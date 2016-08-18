@@ -6,8 +6,6 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 
-import za.co.invictus.shoprite.javamapping.MerchandiseException;
-
 public class DateRange {
 
 	private Date startDate = null;
