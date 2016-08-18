@@ -279,10 +279,15 @@ public class FlattenPriceGroup implements Serializable {
 							System.out
 									.println("PG DEBUG: PG Start Date Before PG Nextand PG End Date Ends After PGNext");
 							if (removedvka0PG != null) {
+								//@formatter:off
 								/**
-								 * -
+								 * |------------VKA0-----------|(removed in previous loop)
+								 * 		|--------VKAP0--------------|
+								 * 			|---------VKP0-------|
+								 * 			
 								 * 
 								 */
+								//@formatter:on
 								System.out
 										.println("PG DEBUG: VKAO From Previous Iteration used");
 								pg.setStartDate(DateRange
