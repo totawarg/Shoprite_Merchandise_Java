@@ -12,6 +12,7 @@ import java.util.Date;
  *
  */
 public class DateRange {
+	
 
 	private Date startDate = null;
 	private Date endDate = null;

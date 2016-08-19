@@ -11,6 +11,7 @@ import java.util.Date;
  */
 public class DateFormat {
 	
+	
 	public static Date formatDate(String inputDate)
 			throws MerchandiseException {
 

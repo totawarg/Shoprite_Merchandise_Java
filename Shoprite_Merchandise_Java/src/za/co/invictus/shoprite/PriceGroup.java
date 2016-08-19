@@ -2,6 +2,7 @@ package za.co.invictus.shoprite;
 
 import java.io.Serializable;
 
+
 import java.util.Date;
 /**
  * Wrapper class for Price Group
