@@ -8,6 +8,16 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Date;
 
+/**
+ * This class Flattens overlapping price group.
+ * Collection of price groups added  using addPriceGroup method will be flattened once
+ * flattenPriceGroup method is called. flattenPriceGroup ArrayList of price group.
+ * Depending on the start date and end date number of returned price group can be same , less or more.
+ * Only VKA0 and VKP0 type are flattened other types are ignored and added back to result flattened group.
+ * @author I045193
+ *
+ */
+
 public class FlattenPriceGroup implements Serializable {
 
 	/**
@@ -20,19 +30,39 @@ public class FlattenPriceGroup implements Serializable {
 	}
 
 	private ArrayList<PriceGroup> list = new ArrayList<PriceGroup>();
+	private ArrayList<PriceGroup> rawList = new ArrayList<PriceGroup>();
+	
 	private static final String VKP0 = "VKP0";
 	private static final String VKA0 = "VKA0";
 	private DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd");
+	
+	/**
+	 * Add Price Group that need to be flattened.
+	 * Only VKA0 and VKP0 type are flattened, if other type are added they are filtered before flattening
+	 * and added back to result array list returned.
+	 * 
+	 * @param priceGroup
+	 */
 
 	public void addPriceGroup(PriceGroup priceGroup) {
 		if (list == null) {
 			list = new ArrayList<PriceGroup>();
 		}
+		if(rawList==null){
+			rawList=new ArrayList<PriceGroup>();
+		}
 		list.add(priceGroup);
+		rawList.add(priceGroup);
 	}
+	
+	/**
+	 * List of PriceGroup
+	 * This returned list before flattening.
+	 * @return
+	 */
 
 	public ArrayList<PriceGroup> getPriceGroup() {
-		return list;
+		return rawList;
 	}
 
 	public ArrayList<PriceGroup> flatneenPriceGroup()
