@@ -3,7 +3,11 @@ package za.co.invictus.shoprite;
 import java.io.Serializable;
 
 import java.util.Date;
-
+/**
+ * Wrapper class for Price Group
+ * @author I045193
+ *
+ */
 public class PriceGroup implements Serializable, Comparable<PriceGroup> {
 
 	private double price = 0.00d;

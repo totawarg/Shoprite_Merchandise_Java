@@ -65,6 +65,13 @@ public class FlattenPriceGroup implements Serializable {
 		return rawList;
 	}
 
+	/**
+	 * Flattens list of Price Group objects added.
+	 * Any Non VKA0 and VKP0 will be filtered before flattening and 
+	 * returned back AS-IS in returned array list
+	 * @return
+	 * @throws MerchandiseException
+	 */
 	public ArrayList<PriceGroup> flatneenPriceGroup()
 			throws MerchandiseException {
 		// Filter Price Group other than VKA0 and VKP0 .
@@ -392,7 +399,11 @@ public class FlattenPriceGroup implements Serializable {
 		return flattenList;
 
 	}
-
+    /**
+     * Filters non VKAO and VKP0.
+     * @param list
+     * @return
+     */
 	private ArrayList<PriceGroup> filterNonVKA0andVKP0(
 			ArrayList<PriceGroup> list) {
 		ArrayList<PriceGroup> nonVKP0VKA0List = new ArrayList<PriceGroup>();

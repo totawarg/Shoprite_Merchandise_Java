@@ -4,7 +4,11 @@ import java.text.SimpleDateFormat;
 import java.text.ParseException;
 import java.util.Calendar;
 import java.util.Date;
-
+/**
+ * General utility class to format dates.
+ * @author I045193
+ *
+ */
 public class DateFormat {
 	
 	public static Date formatDate(String inputDate)

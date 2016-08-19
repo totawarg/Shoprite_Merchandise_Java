@@ -5,7 +5,12 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
-
+/**
+ * Wrapper class for Date Range, 
+ * with utility methods to calculate date overlaps
+ * @author I045193
+ *
+ */
 public class DateRange {
 
 	private Date startDate = null;
@@ -26,6 +31,13 @@ public class DateRange {
 	public void setEndDate(Date endDate) {
 		this.endDate = endDate;
 	}
+	
+	/**
+	 * Returns true if date range overlap
+	 * @param date1
+	 * @param date2
+	 * @return
+	 */
 
 	public static boolean dateRangeOverlap(DateRange date1, DateRange date2) {
 		boolean overlap = false;
@@ -37,20 +49,50 @@ public class DateRange {
 		return overlap;
 	}
 	
+	/**
+	 * Returns True if DateRange 1 and 2 have same start dates
+	 * @param date1 DateRange
+	 * @param date2 DateRange
+	 * @return
+	 */
 	public static boolean date1StartDateEqualsDate2StartDate(DateRange date1,
 			DateRange date2) {
 		return date1.getStartDate().compareTo(date2.getStartDate()) == 0;
 	}
 
+	/**
+
+	 * Returns True if DateRange 1 and 2 have same end dates
+	 * @param date1 DateRange
+	 * @param date2 DateRange
+	 * @return
+	 *
+	 * @param date1
+	 * @param date2
+	 * @return
+	 */
 	public static boolean date1EndDateEqualsDate2SEndDate(DateRange date1,
 			DateRange date2) {
 		return date1.getEndDate().compareTo(date2.getEndDate()) ==0;
 	}
 	
+	/**
+	 * Returns True if DateRange 1 start before DateRange 2
+	 * @param date1 DateRange
+	 * @param date2 DateRange
+	 * @return
+	 */
 	public static boolean date1StartDateBeforeDate2StartDate(DateRange date1,
 			DateRange date2) {
 		return date1.getStartDate().compareTo(date2.getStartDate()) < 0;
 	}
+	
+	/**
+	 * Returns True if DateRange 1 ends before DateRange 2
+	 * @param date1 DateRange
+	 * @param date2 DateRange
+	 * @return
+	 */
 
 	public static boolean date1EndDateBeforeDate2SEndDate(DateRange date1,
 			DateRange date2) {
