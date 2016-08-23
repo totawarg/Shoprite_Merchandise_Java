@@ -420,44 +420,36 @@ public class FlattenPriceGroup implements Serializable {
 	public static void main(String[] a) throws ParseException,
 			MerchandiseException {
 		SimpleDateFormat format = new SimpleDateFormat("yyyy/MM/dd");
+		
 		PriceGroup pg1 = new PriceGroup();
-		Date dates1 = format.parse("2016/02/01");
+		Date dates1 = format.parse("2016/05/01");
 		Date datee1 = format.parse("9999/12/31");
 		pg1.setStartDate(dates1);
 		pg1.setEndDate(datee1);
 		pg1.setType("VKP0");
-		pg1.setPrice(100.00);
-
+		pg1.setPrice(10.00);
+		
 		PriceGroup pg2 = new PriceGroup();
-		Date dates2 = format.parse("2016/02/03");
-		Date datee2 = format.parse("2016/02/07");
+		Date dates2 = format.parse("2016/05/04");
+		Date datee2 = format.parse("2016/05/05");
 		pg2.setStartDate(dates2);
 		pg2.setEndDate(datee2);
-		pg2.setType("VKP0");
-		pg2.setPrice(90.00);
-
+		pg2.setType("VKA0");
+		pg2.setPrice(9.50);
+		
 		PriceGroup pg3 = new PriceGroup();
-		Date dates3 = format.parse("2016/02/05");
-		Date datee3 = format.parse("2016/02/07");
+		Date dates3 = format.parse("2016/05/07");
+		Date datee3 = format.parse("2016/05/09");
 		pg3.setStartDate(dates3);
 		pg3.setEndDate(datee3);
-		pg3.setType("VKP0");
-		pg3.setPrice(85.00);
-
-		PriceGroup pg4 = new PriceGroup();
-		Date dates4 = format.parse("2016/02/07");
-		Date datee4 = format.parse("2016/02/07");
-		pg4.setStartDate(dates4);
-		pg4.setEndDate(datee4);
-		pg4.setType("VKA0");
-		pg4.setPrice(80.00);
-
+		pg3.setType("VKA0");
+		pg3.setPrice(9.00);
+		
 		FlattenPriceGroup fg = new FlattenPriceGroup();
 		fg.addPriceGroup(pg1);
 		fg.addPriceGroup(pg2);
 		fg.addPriceGroup(pg3);
-		fg.addPriceGroup(pg4);
-		ArrayList<PriceGroup> pgList = fg.flatneenPriceGroup();
+		ArrayList<PriceGroup> pgList=fg.flatneenPriceGroup();
 
 		for (PriceGroup pg : pgList) {
 			System.out.println("*************************");
