@@ -203,7 +203,7 @@ public class FlattenPriceGroup implements Serializable {
 						 * 
 						 */
 						//@formatter:on
-						if (pgEndDateEndsBeforepgNextEndDate) {
+						if (pgEndDateEndsBeforepgNextEndDate || startdatesSame) {
 							flattenList.add(pg);
 							list.remove(pg);
 							pgNext.setStartDate(DateRange
@@ -375,6 +375,9 @@ public class FlattenPriceGroup implements Serializable {
 								i = -1;
 							}
 						}
+					}else if (pg.getType().equals(VKA0)
+							&& pgNext.getType().equals(VKA0)){
+						//This scenario should happen as per SAP 
 					}
 				} else {
 					if (list.size() > 2) {
@@ -383,6 +386,7 @@ public class FlattenPriceGroup implements Serializable {
 						flattenList.add(pg);
 						list.remove(pg);
 						Collections.sort(list);
+						i=-1;
 					} else {
 						System.out
 								.println("PG DEBUG: PG and PG Next Dont Overlap and total number objects is less than or equal to 2");
@@ -422,28 +426,28 @@ public class FlattenPriceGroup implements Serializable {
 		SimpleDateFormat format = new SimpleDateFormat("yyyy/MM/dd");
 		
 		PriceGroup pg1 = new PriceGroup();
-		Date dates1 = format.parse("2016/05/01");
-		Date datee1 = format.parse("9999/12/31");
+		Date dates1 = format.parse("2016/08/25");
+		Date datee1 = format.parse("2016/08/25");
 		pg1.setStartDate(dates1);
 		pg1.setEndDate(datee1);
 		pg1.setType("VKP0");
-		pg1.setPrice(10.00);
+		pg1.setPrice(30.77);
 		
 		PriceGroup pg2 = new PriceGroup();
-		Date dates2 = format.parse("2016/05/04");
-		Date datee2 = format.parse("2016/05/05");
+		Date dates2 = format.parse("2016/08/26");
+		Date datee2 = format.parse("2016/08/28");
 		pg2.setStartDate(dates2);
 		pg2.setEndDate(datee2);
 		pg2.setType("VKA0");
-		pg2.setPrice(9.50);
+		pg2.setPrice(12.99);
 		
 		PriceGroup pg3 = new PriceGroup();
-		Date dates3 = format.parse("2016/05/07");
-		Date datee3 = format.parse("2016/05/09");
+		Date dates3 = format.parse("2016/08/26");
+		Date datee3 = format.parse("9999/12/31");
 		pg3.setStartDate(dates3);
 		pg3.setEndDate(datee3);
-		pg3.setType("VKA0");
-		pg3.setPrice(9.00);
+		pg3.setType("VKP0");
+		pg3.setPrice(30.77);
 		
 		FlattenPriceGroup fg = new FlattenPriceGroup();
 		fg.addPriceGroup(pg1);

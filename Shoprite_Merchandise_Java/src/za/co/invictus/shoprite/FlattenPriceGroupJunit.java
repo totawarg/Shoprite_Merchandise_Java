@@ -773,6 +773,77 @@ public class FlattenPriceGroupJunit {
 		
 	}
 	
+	@Test
+	public void testMultipleVKP0AndSingleVKA0WithVKA0andVKP0samestartDate() throws ParseException, MerchandiseException{
+		SimpleDateFormat format = new SimpleDateFormat("yyyy/MM/dd");
+		PriceGroup pg1 = new PriceGroup();
+		Date dates1 = format.parse("2016/08/25");
+		Date datee1 = format.parse("2016/08/25");
+		pg1.setStartDate(dates1);
+		pg1.setEndDate(datee1);
+		pg1.setType("VKP0");
+		pg1.setPrice(30.77);
+		
+		PriceGroup pg2 = new PriceGroup();
+		Date dates2 = format.parse("2016/08/26");
+		Date datee2 = format.parse("2016/08/28");
+		pg2.setStartDate(dates2);
+		pg2.setEndDate(datee2);
+		pg2.setType("VKA0");
+		pg2.setPrice(12.99);
+		
+		PriceGroup pg3 = new PriceGroup();
+		Date dates3 = format.parse("2016/08/26");
+		Date datee3 = format.parse("9999/12/31");
+		pg3.setStartDate(dates3);
+		pg3.setEndDate(datee3);
+		pg3.setType("VKP0");
+		pg3.setPrice(30.77);
+		
+		FlattenPriceGroup fg = new FlattenPriceGroup();
+		fg.addPriceGroup(pg1);
+		fg.addPriceGroup(pg2);
+		fg.addPriceGroup(pg3);
+		ArrayList<PriceGroup> pgList=fg.flatneenPriceGroup();
+		
+		//
+		PriceGroup epg1 = new PriceGroup();
+		Date edates1 = format.parse("2016/08/25");
+		Date edatee1 = format.parse("2016/08/25");
+		epg1.setStartDate(edates1);
+		epg1.setEndDate(edatee1);
+		epg1.setType("VKP0");
+		epg1.setPrice(30.77);
+		
+		PriceGroup epg2 = new PriceGroup();
+		Date edates2 = format.parse("2016/08/26");
+		Date edatee2 = format.parse("2016/08/28");
+		epg2.setStartDate(edates2);
+		epg2.setEndDate(edatee2);
+		epg2.setType("VKA0");
+		epg2.setPrice(12.99);
+		
+		PriceGroup epg3 = new PriceGroup();
+		Date edates4 = format.parse("2016/08/29");
+		Date edatee4 = format.parse("9999/12/31");
+		epg3.setStartDate(edates4);
+		epg3.setEndDate(edatee4);
+		epg3.setType("VKP0");
+		epg3.setPrice(30.77);
+		
+		ArrayList<PriceGroup> elist=new ArrayList<PriceGroup>();
+		elist.add(epg1);
+		elist.add(epg2);
+		elist.add(epg3);
+	
+		Collections.sort(elist);
+		/** **/
+		assertEquals("Arrays do not match", elist, pgList);
+		System.out.println("Arrays match");
+		
+
+		
+	}
 	
 
 }
