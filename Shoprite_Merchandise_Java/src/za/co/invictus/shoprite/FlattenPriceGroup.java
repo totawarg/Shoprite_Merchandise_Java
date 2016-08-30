@@ -141,6 +141,9 @@ public class FlattenPriceGroup implements Serializable {
 						continue;
 					} else if (pg.getType().equals(VKA0)
 							&& pgNext.getType().equals(VKA0)) {
+						/*Not a valid scenario, this cannot be configuered in SAP
+						 * Check with SAP functional team if this happens
+						*/
 						//@formatter:off
 						/**-
 						 * |-----VKA0-------|
@@ -152,6 +155,9 @@ public class FlattenPriceGroup implements Serializable {
 						continue;
 					} else if (pg.getType().equals(VKP0)
 							&& pgNext.getType().equals(VKP0)) {
+						/*Not a valid scenario, this cannot be configuered in SAP
+						 * Check with SAP functional team if this happens
+						*/
 						//@formatter:off
 						/**-
 						 * |-----VKP0-------|
@@ -202,13 +208,13 @@ public class FlattenPriceGroup implements Serializable {
 						 * 
 						 * or
 						 * 
-						 * Is this a valid Scenario ?
+						 *
 						 *|-------VKA0-----------------|
 						 * |-------VKP0------------|
 						 * 
 						 */
 						//@formatter:on
-						if (pgEndDateEndsBeforepgNextEndDate || (startdatesSame && pgEndDateEndsBeforepgNextEndDate)) {
+						if (pgStartDateBeforepgNextDate && pgEndDateEndsBeforepgNextEndDate || (startdatesSame && pgEndDateEndsBeforepgNextEndDate)) {
 							flattenList.add(pg);
 							list.remove(pg);
 							pgNext.setStartDate(DateRange
@@ -229,7 +235,7 @@ public class FlattenPriceGroup implements Serializable {
 
 						removedvka0PG = PriceGroup.getPriceGroup(pgNext);
 
-						if (pgEndDateEndsBeforepgNextEndDate || enddatesSame) {
+						if ((pgStartDateBeforepgNextDate && pgEndDateEndsBeforepgNextEndDate) || (pgStartDateBeforepgNextDate && enddatesSame)) {
 							//@formatter:off
 							/**-
 							 * |-----VKP0-----|
@@ -268,7 +274,20 @@ public class FlattenPriceGroup implements Serializable {
 									dateFormat.format(pgNext.getEndDate()), 1));
 							Collections.sort(list);
 							i = -1;
-						} else {
+						} else if(startdatesSame && pgEndDateEndsBeforepgNextEndDate){
+							//@formatter:off
+							/**-
+							 * 
+							 * |-----VKP0--------------|
+							 * |---------VKA0----------------|
+							 * 
+							 */
+							//@formatter:on
+							list.remove(pg);
+							i = -1;
+							continue;
+							
+						}else if(pgStartDateBeforepgNextDate && !pgEndDateEndsBeforepgNextEndDate){
 							//@formatter:off
 							
 							/**-
@@ -295,7 +314,7 @@ public class FlattenPriceGroup implements Serializable {
 					} else if (pg.getType().equals(VKP0)
 							&& pgNext.getType().equals(VKP0)) {
 
-						if (pgEndDateEndsBeforepgNextEndDate) {
+						if (pgStartDateBeforepgNextDate && pgEndDateEndsBeforepgNextEndDate) {
 							//@formatter:off
 							/**-
 							 *|-----VKP0-------|
@@ -383,7 +402,7 @@ public class FlattenPriceGroup implements Serializable {
 						}
 					}else if (pg.getType().equals(VKA0)
 							&& pgNext.getType().equals(VKA0)){
-						//This scenario should happen as per SAP 
+						//This scenario should happen as per SAP No over lap of Promotions
 					}
 				} else {
 					if (list.size() > 2) {
