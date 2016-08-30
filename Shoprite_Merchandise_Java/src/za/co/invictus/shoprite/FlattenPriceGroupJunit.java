@@ -844,6 +844,67 @@ public class FlattenPriceGroupJunit {
 
 		
 	}
+	@Test
+	public void testVKA0andVKP0StartDateSameVKP0EndBeforeVKA0() throws ParseException, MerchandiseException{
+		
+SimpleDateFormat format = new SimpleDateFormat("yyyy/MM/dd");
+		
+		PriceGroup pg1 = new PriceGroup();
+		Date dates1 = format.parse("2016/08/26");
+		Date datee1 = format.parse("2016/09/05");
+		pg1.setStartDate(dates1);
+		pg1.setEndDate(datee1);
+		pg1.setType("VKA0");
+		pg1.setPrice(10.77);
+		
+		PriceGroup pg2 = new PriceGroup();
+		Date dates2 = format.parse("2016/08/26");
+		Date datee2 = format.parse("2016/08/31");
+		pg2.setStartDate(dates2);
+		pg2.setEndDate(datee2);
+		pg2.setType("VKP0");
+		pg2.setPrice(30.77);
+		
+		PriceGroup pg3 = new PriceGroup();
+		Date dates3 = format.parse("2016/09/01");
+		Date datee3 = format.parse("9999/12/31");
+		pg3.setStartDate(dates3);
+		pg3.setEndDate(datee3);
+		pg3.setType("VKP0");
+		pg3.setPrice(30.77);
+		
+		FlattenPriceGroup fg = new FlattenPriceGroup();
+		fg.addPriceGroup(pg1);
+		fg.addPriceGroup(pg2);
+		fg.addPriceGroup(pg3);
+		ArrayList<PriceGroup> pgList=fg.flatneenPriceGroup();
+		
+		//
+		PriceGroup epg1 = new PriceGroup();
+		Date edates1 = format.parse("2016/08/26");
+		Date edatee1 = format.parse("2016/09/05");
+		epg1.setStartDate(edates1);
+		epg1.setEndDate(edatee1);
+		epg1.setType("VKA0");
+		epg1.setPrice(10.77);
+		
+		PriceGroup epg2 = new PriceGroup();
+		Date edates2 = format.parse("2016/09/06");
+		Date edatee2 = format.parse("9999/12/31");
+		epg2.setStartDate(edates2);
+		epg2.setEndDate(edatee2);
+		epg2.setType("VKP0");
+		epg2.setPrice(30.77);
+		
+		ArrayList<PriceGroup> elist=new ArrayList<PriceGroup>();
+		elist.add(epg1);
+		elist.add(epg2);
+		Collections.sort(elist);
+		/** **/
+		assertEquals("Arrays do not match", elist, pgList);
+		System.out.println("Arrays match");
+		
+	}
 	
 
 }

@@ -193,6 +193,11 @@ public class FlattenPriceGroup implements Serializable {
 						 * or
 						 * 
 						 * |-------VKA0-------|
+						 * |-------VKP0----|
+						 * 
+						 * or
+						 * 
+						 * |-------VKA0-------|
 						 * 		|-------VKP0------------|
 						 * 
 						 * or
@@ -203,7 +208,7 @@ public class FlattenPriceGroup implements Serializable {
 						 * 
 						 */
 						//@formatter:on
-						if (pgEndDateEndsBeforepgNextEndDate || startdatesSame) {
+						if (pgEndDateEndsBeforepgNextEndDate || (startdatesSame && pgEndDateEndsBeforepgNextEndDate)) {
 							flattenList.add(pg);
 							list.remove(pg);
 							pgNext.setStartDate(DateRange
@@ -213,6 +218,7 @@ public class FlattenPriceGroup implements Serializable {
 							Collections.sort(list);
 							i = -1;
 						}else if((startdatesSame && !pgEndDateEndsBeforepgNextEndDate) || (pgStartDateBeforepgNextDate && !pgEndDateEndsBeforepgNextEndDate)){
+							
 							list.remove(pgNext);
 							i = -1;
 							continue;
@@ -426,23 +432,23 @@ public class FlattenPriceGroup implements Serializable {
 		SimpleDateFormat format = new SimpleDateFormat("yyyy/MM/dd");
 		
 		PriceGroup pg1 = new PriceGroup();
-		Date dates1 = format.parse("2016/08/25");
-		Date datee1 = format.parse("2016/08/25");
+		Date dates1 = format.parse("2016/08/26");
+		Date datee1 = format.parse("2016/09/05");
 		pg1.setStartDate(dates1);
 		pg1.setEndDate(datee1);
-		pg1.setType("VKP0");
-		pg1.setPrice(30.77);
+		pg1.setType("VKA0");
+		pg1.setPrice(10.77);
 		
 		PriceGroup pg2 = new PriceGroup();
 		Date dates2 = format.parse("2016/08/26");
-		Date datee2 = format.parse("2016/08/28");
+		Date datee2 = format.parse("2016/08/31");
 		pg2.setStartDate(dates2);
 		pg2.setEndDate(datee2);
-		pg2.setType("VKA0");
+		pg2.setType("VKP0");
 		pg2.setPrice(12.99);
 		
 		PriceGroup pg3 = new PriceGroup();
-		Date dates3 = format.parse("2016/08/26");
+		Date dates3 = format.parse("2016/09/01");
 		Date datee3 = format.parse("9999/12/31");
 		pg3.setStartDate(dates3);
 		pg3.setEndDate(datee3);
